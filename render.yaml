@@ -1,0 +1,14 @@
+services:
+    - type: web
+    name: nithub
+    env: ruby
+    buildCommand: "bundle install"
+    startCommand: "bundle exec puma -C config/puma.rb"
+    envVars:
+            - key: DATABASE_URL
+        fromDatabase:
+          name: nithub-db
+          property: connectionString
+databases:
+    - name: nithub-db
+    databaseName: nithub_production
